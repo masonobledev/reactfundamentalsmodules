@@ -2,26 +2,6 @@ import React, {useState, useEffect} from 'react';
 
 const Effects = () => {
 
-    const SampleEffect = () => {
-        const [timerRunning, setTimerRunning] = useState(false);
-
-        useEffect(() => {
-            console.log('we initiated a state change')
-        })
-
-        let buttonHandler = () => {
-            if (!timerRunning){
-                setTimerRunning(true);
-            }
-        }
-
-        return(
-            <div style={ { border: '1px dashed black' } }>
-                <h2>This component demoes an effect</h2>
-                <button onClick={buttonHandler}>Click me to start an effect in the console</button>
-            </div>
-        )
-    }
     return(
         <div className="main">
             <div className="mainDiv">
@@ -36,7 +16,36 @@ const Effects = () => {
                 <SampleEffect/>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Effects;
+
+const SampleEffect = () => {
+    const [timerRunning, setTimerRunning] = useState(false);
+
+    useEffect(() => {
+        console.log('we initiated a state change');
+        let timer;
+        if (timerRunning){
+            timer = window.setTimeout(() => {
+            console.log('the timer expired, Date.now()/1000');
+            setTimerRunning(false);
+            }, 2000)
+        }
+        return () => {window.clearTimeout(timer); console.log('the timer was cleaned up', Date.now()/1000)}
+    });
+
+    let buttonHandler = () => {
+        if (!timerRunning){
+            setTimerRunning(true);
+        }
+    };
+    
+    return(
+        <div style={ { border: '1px dashed black' } }>
+            <h2>This component demoes an effect.</h2>
+            <button onClick={buttonHandler}>Click me to start an effect in the console.</button>
+        </div>
+    )
+};
