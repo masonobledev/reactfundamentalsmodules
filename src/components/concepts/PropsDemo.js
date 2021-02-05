@@ -61,7 +61,7 @@ const FunctionalComponent = (props) => {
             <button onClick={props.function}>Press Me!</button>
             <TinyComponent selectedStyle={ props.selectedStyle } />
         </div>
-    )
+    );
 };
 
 const TinyComponent = (props) => {
@@ -69,11 +69,11 @@ const TinyComponent = (props) => {
         <div>
             <p>The current style is : { props.selectedStyle }</p>
         </div>
-    )
+    );
 };
 
 FunctionalComponent.defaultProps = {
-    string: 'This is wild!',
-    function: () => console.log('Can I see this in my dev tools?'),
-    selectedStyle : 'what style??'
-}
+    string: PropTypes.string.isRequired,
+    function: PropTypes.func.isRequired,
+    selectedStyle : PropTypes.string.isRequired,
+};
