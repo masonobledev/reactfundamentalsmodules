@@ -24,7 +24,23 @@ const NytApp = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setPageNumber(0);
         fetchResults();
+        event.preventDefault()
+      };
+
+      const changePageNumber = (event, direction) => {
+          event.preventDefault()
+          if (direction === 'down') {
+              if (pageNumber > 0) {
+                  setPageNumber(pageNumber - 1);
+                  fetchResults();
+              }
+          }
+          if (direction === 'up') {
+              setPageNumber(pageNumber + 1);
+              fetchResults();
+          }
       };
 
     return(
@@ -42,9 +58,15 @@ const NytApp = () => {
                     <br />
                     <button className="submit">Submit search</button>
                 </form>
+                {
+                    results.length > 0 ? <NytResults results={ results } changePage={ ChangePageNumber } /> : null
+                }
+
+
+
             </div>
         </div>
     );
-}
+};
 
 export default NytApp;
