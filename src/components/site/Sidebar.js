@@ -16,6 +16,7 @@ import PropsDemo from '../concepts/PropsDemo';
 import Hooks from '../concepts/Hooks';
 import TimePiecesApp from '../apps/timer-apps/TimePiecesApp';
 import ClassComponentDemo from '../concepts/ClassComponentDemo';
+import ClassComponentProps from '../concepts/ClassComponentProps'
 
 const Sidebar = () => {
     return (
@@ -32,6 +33,7 @@ const Sidebar = () => {
                     <li><Link to="/hooks">Hooks</Link></li>
                     <li><Link to="/timer">Timers</Link></li>
                     <li><Link to="/classcomponent">Class Component</Link></li>
+                    <li><Link to="/classcomponentprops">Class Component Props</Link></li>
                 </ul>
             </div>
             <div className="sidebar-route">
@@ -47,6 +49,7 @@ const Sidebar = () => {
                     <Route exact path="/hooks"><Hooks /></Route>
                     <Route exact path="/timer"><TimePiecesApp /></Route>
                     <Route exact path="/classcomponent"><ClassComponentDemo /></Route>
+                    <Route exact path="/classcomponentprops"><ClassComponentProps /></Route>
                 </Switch>
             </div>
         </div>
